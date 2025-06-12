@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Anish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         *{
             margin:0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Jost", sans-serif;
+            transition-duration: 300ms;
+            scroll-behavior: smooth;
         }
 
         body{
@@ -19,24 +29,408 @@
             color: white;
         }
 
+        header{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* display: grid;
+            place-items: center; */
+        }
+
+        header h1{
+            font-family: "Oswald", sans-serif;
+            font-size: 4.6rem;
+            user-select: none;
+        }
+
+        header div{
+            display: flex;
+            gap: 20px;
+        }
+
+        header div h1:first-child{
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+        
+
+        header ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        header ul li{
+            list-style-type: none;
+            font-size: 0.9em;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header ul li::after{
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            right: 100%;
+            bottom: 0;
+            transition-duration: 300ms;
+        }
+
+        header ul li:hover::after{
+                transform: translateX(100%);
+        }
+
+        header a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        section{
+            min-height: 100vh;
+            padding: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        section:nth-child(2n){
+            background: white;
+            color: #0f172a;
+        }
+
+        .section-header{
+            text-align: center;
+            /* width: fit-content; */
+            /* margin: 0 auto; */
+            text-transform: uppercase;
+            font-family: "Oswald", sans-serif;
+            position: relative;
+            /* padding: 4px 10px; */
+            width: 100%;
+            max-width: 85ch;
+            margin: 0 auto;
+        }
+
+        .section-header::before,
+        .section-header::after{
+            position: absolute;
+            width: 100%;
+            /* width: 100vw; */
+            height: 1px;
+            content: '';
+            /* background: green; */
+            background: #0f172a;
+        }
+
+
+        .section-header::before{
+            right: 0;
+            top: 0;
+        }
+
+        .section-header::after{
+            left: 0;
+            bottom: 0;
+        }
+
+        section:nth-child(2n + 1) .section-header::before,
+        section:nth-child(2n + 1) .section-header::after{
+            background: white;
+        }
+
+        .section-wrapper{
+            width: 100%;
+            max-width: 75ch;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: greenyellow; */
+        }
+
+        .section-content{
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 0.8em;
+            text-align: left;
+        }
+
+        .experience-header{
+            display: flex;
+            /* align-items: center;
+            justify-content: space-between;
+            background: yellowgreen;
+            height: 10px; */
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .experience-header h2{
+            font-size: 500;
+        }
+        .experience-subheader{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #cbd5e1;
+        }
+
+        .resume-item > p{
+            padding: 2px 0;
+        }
+
+
+        .project-grid{
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0,1fr));
+            width: 100%;
+            gap: 10px;
+        }
+
+        .project-grid img{
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .project-item{
+            /* border: 1px solid #0f172a; */
+            box-shadow: 0 0 4px 2px lightgray;
+            /* padding: 4px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .project-item:hover{
+            box-shadow: 0 0 8px 2px darkgray;
+        }
+
+        .img-text{
+            position: absolute;
+            width: 100%;
+            left:0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, #0f172a);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .img-text h3{
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: "Oswald", sans-serif;
+        }
+
+        .project-links{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         
+            /* gap: 20px; * */
+            /* display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr)); */
+            gap: 4px;
+           
+        }
+
+        .project-links a{
+            user-select: none;
+            cursor: pointer;
+            background: #0f172a;
+            padding: 2px 6px;
+            gap: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 300;
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            border: 1px solid white;
+        }
+
+        .project-links i{
+            padding-left: 2px;
+            font-size: 0.8em;
+        }
+
+        .project-links a:hover{
+            transform: scale(1.1);
+        }
+
+        footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            gap: 20px;
+            font-size: 1.2em;
+        }
+
+        footer a{
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer a:hover{
+            transform: rotate(-45deg);
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
 
     
     <header>
-
+        <div>
+            <h1>Developer</h1>
+            <h1>Anish</h1>
+        </div>
+        <ul>
+            <li>
+                <a href="#about-me">About Me</a>
+            </li>
+            <li>
+                <a href="#experience">Achievements</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+        </ul>
     </header>
 
     <main>
         <nav></nav>
-        <section></section>
-        <section></section>
-        <section></section>
+        <section id="about-me">
+            <h2 class="section-header">About Me</h2>
+            <div class="section-wrapper">
+                <div class="section-content">
+                    <p><b>Address:</b>Urlabari-7,Morang</p>
+                    <p><b>Phone:</b>9703077363</p>
+                    <p><b>Email:</b>at7anish@gmail.com</p>
+                    <p><b>GitHub:</b><a href="https://github.com/Anish-Programmer">https://github.com/Anish-Programmer</a></p>
+                    <p><b>Linkdin:</b><a href="https://www.linkedin.com/in/anish-tamang-249a8536a/">https://www.linkedin.com/in/anish-tamang-249a8536a/</a></p>
+                    <br>
+                    <h2>Career Objectives</h2>
+                    <p> <b>Passionate and detail-oriented Frontend Developer</b> with practical experience building responsive
+ web applications using HTML, CSS, JavaScript, and React.js. Skilled in creating user-friendly
+ interfaces. Currently working on building skills in the <b>MERN stack</b> to build full-stack applications.
+ Hungry about bringing creative ideas and building professional skills as a member of a dynamic
+ team. </p>
+                </div>
+
+
+            </div>
+        </section>
+        <section id="experience">
+            <h2 class="section-header">AWARDS AND ACHIEVEMENTS</h2>
+            <div class="section-wrapper">
+                <div class="section-content">
+                    <div class="resume-item">
+                        <div class="experience-header">
+                        <h2>Creative Clash 2025</h2>
+                        <div class="experience-subheader">
+                            <p>Design Symphony, Web Infero, Code Clash</p>
+                            <p>2025</p>
+                        </div>
+                    </div>
+                         <p>I developed wireframe, single web page, solved DSA problem.</p>
+                    </div>
+                    
+                    <div class="resume-item">
+                             <div class="experience-header">
+                        <h2>Sports Week 2025</h2>
+                        <div class="experience-subheader">
+                            <p>Itahari International College</p>
+                            <p>2025</p>
+                        </div>
+                    </div>
+                         <p>I have got an opportunity to volunter the games.</p>
+                    </div>
+                     
+                </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <h2 class="section-header">Projects</h2>
+            <div class="section-wrapper">
+                <div class="project-grid">
+                    <div class="project-item">
+                        <img src="/public/repsonsive_landing_page.png" alt="Responsive landing page">
+                        <div class="img-text">
+                            <h3>Responsive Landing Page</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/Anish-Programmer/responsive-landing-page" target="_blank">
+                                    <p>source<i class="fa fa-code" aria-hidden="true"></i></p>
+                                </a>
+                                <a>
+                                    <p>live<i class="fa-solid fa-bolt"></i></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="/public/e-commerce.png" alt="e-commerce">
+                        <div class="img-text">
+                            <h3>Grocey Store Website</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/Anish-Programmer/e-commerce-website" target="_blank">
+                                    <p>source<i class="fa fa-code" aria-hidden="true"></i></p>
+                                </a>
+                                <a>
+                                    <p>live<i class="fa-solid fa-bolt"></i></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="/public/book_vehicleApp.png" alt="book-vehicl app">
+                        <div class="img-text">
+                            <h3>Vehicle Booking App</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/Anish-Programmer/vehicle-booking-webapp" target="_blank">
+                                    <p>source<i class="fa fa-code" aria-hidden="true"></i></p>
+                                </a>
+                                <a>
+                                    <p>live<i class="fa-solid fa-bolt"></i></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-
+        <a href="https://www.linkedin.com/in/anish-tamang-249a8536a">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="#">
+            <i class="fa-brands fa-codepen"></i>
+        </a>
+        <a href="https://github.com/Anish-Programmer">
+            <i class="fa-brands fa-github"></i>
+        </a>
     </footer>
     
 </body>
